@@ -24,9 +24,10 @@
 
             <div class="col-lg-10 col-md-10 col-sm-10">
                 <div class="container content">
-                    <div class="header mb-4 text-right p-1 bg-white">
+                    <div class="header mb-4 text-right p-3 bg-white">
                         <a href="">
-                            <span class="text-dark">LOGOUT</span>
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            <span class="text-danger"><b>Log Out</b></span>
                             <i class="fa fa-power-off text-danger" aria-hidden="true"></i>
                         </a>
                     </div>

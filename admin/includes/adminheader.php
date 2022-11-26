@@ -1,5 +1,5 @@
 
-        <div class="col-lg-2 sidebar p-3 fixed-top">
+        <div class="col-lg-2 sidebar p-3 fixed-" style="">
             <div class="head" style = "display:flex;">
             <i class="fa fa-arrow-circle-left mr-4" id="btn" style="font-size:1.5rem; color: white;" aria-hidden="true"></i>
                 <h6 style="font-size: 17px;" class="text-center text-white">KYU Chemistry Lab</h6>
