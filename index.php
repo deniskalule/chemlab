@@ -24,7 +24,7 @@
                 <p class="text-center p-2" ><b>Welcome to Kyambogo Chemistry Laboratory portal.</b></p>
             </div>
             <div class="col-lg-4 p-3 form">
-                <form action="server.php" method="post" class="shadow">
+                <form action="adminlogin.php" method="post" class="shadow">
                     
                     <div class="form-group text-white">
                         <label for="">Username: </label>

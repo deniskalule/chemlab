@@ -1,9 +1,32 @@
+/* main */
+.main
+{
+    margin: 15px;
+    height: 98vh;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* sidebar */
+
 .sidebar
 {
     background: rgba(2, 2, 44, 0.733);
-    width: 100%;
-    height: 100vh;
+    width: 15%;
+    height: 98vh;
+    border-radius: 25px 0 0 25px;
     /* display: none; */
+    padding-top: 30px;
+
+}
+
+
+/* content */
+.content
+{
+    width: 85%;
+    /* margin-left: 1%; */
 }
 
 .arrow-down
@@ -13,7 +36,7 @@
 
 .sidebar.active
 {
-    width: 120px;
+    width: 7%;
     /* display: none; */
 }
 .sidebar.active h6
@@ -26,41 +49,43 @@
     display: none;
 }
 
+.sidebar a
+{
+    text-decoration: none;
+}
 
-
-.home
+.sidebar .home
 {
     color: #fff;
     text-decoration: none;
 }
 
-.home i
+.sidebar .home i
 {
     color: rgb(182, 182, 199);
 }
-.home:hover
+.sidebar .home:hover
 {
     color: rgb(221, 111, 20);
 }
-a .home span{
+.sidebar a .home span{
     font-size: 12px;
     text-decoration: none;
 }
 
+.sidebar .profile
+{
+    background-color: #fff;
+    margin: 0 -15px;
+    padding: 10px;
+}
 
-
-.profile img
+.sidebar .profile img
 {
     border-radius: 20%;
 }
 
-
-
-ul
-{
-    /* list-style-type: none; */
-}
-#ul
+.sidebar #ul
 {
     margin: 0;
     padding: 0;
@@ -71,32 +96,41 @@ ul
     cursor: pointer;
     user-select: none;
     font-size: 12px;
+
 }
 
 .nested li
 {
     font-size: 12px;
     margin: 0;
+    list-style-type: none;
+    margin-left: -20px;
+    padding: 5px;
 }
 .caret::after{
-    content: "\25B6";
+    content: "\25B2";
     display: inline-block;
     margin-left: 50px;
     float: right;
-    color: #77767;
-    
+    transform: rotate(90deg);
     
 }
 
 .caret-down::after
 {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
 }
 
 .nested
 {
     display: none;
 }
+
+.nested a:hover
+{
+    color: rgb(221, 111, 20);
+}
+
 
 .nested.active
 {
@@ -106,6 +140,40 @@ ul
 .enq-content .image
 {
     display: flex; 
+}
+
+/* navbar */
+.navbar
+{
+    position: relative;
+    width: 100%;
+    top: 0;
+}
+
+
+/* inner-content */
+
+.content .inner-content
+{
+    height: 82vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 20px;
+
+}
+
+.inner-content::-webkit-scrollbar
+{
+    width: 1vw;
+}
+.inner-content::-webkit-scrollbar-thumb
+{
+    background-color: gray;
+}
+
+.inner-content::-webkit-scrollbar-track
+{
+    background-color: #fff;
 }
 
 
@@ -133,6 +201,11 @@ ul
     .content .card
     {
         margin-left: 30px;
+    }
+
+    .card
+    {
+        
     }
     .content .enq-content
     {
