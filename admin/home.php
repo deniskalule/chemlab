@@ -29,11 +29,16 @@ include('./includes/header.php');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-4" style="display:flex;">
-                                    <i class="fa fa-flask" style="font-size:2rem; color: red;" aria-hidden="true"></i>
-                                    <h1 class="text-center ml-4" style=" margin-top: -6px;">0</h1>
+                                    
+                                    <h1 class="text-center ml-4" style=" margin-top: -6px;">
+                                    <?php
+                                        $query= $conn->query("select id from organic");
+                                        echo $query->num_rows;
+                                    ?>
+                                    </h1>
                                 </div>
                                 <div class="col-8">
-                                    <h4 class="card-title">Chemicals</h4>
+                                    <h4 class="card-title"><i class="fa fa-flask mr-3" style="font-size:2rem; color: red;" aria-hidden="true"></i>Chemicals</h4>
                                     <a href="chemicals.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
                                 </div>
                             </div>
@@ -46,12 +51,17 @@ include('./includes/header.php');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-4" style="display:flex;">
-                                <i class="fa fa-thermometer-half" style="font-size:2rem; color: orange;" aria-hidden="true"></i>
-                                <h1 class="text-center ml-4" style=" margin-top: -6px;">0</h1>
+                                
+                                <h1 class="text-center ml-4" style=" margin-top: -6px;">
+                                <?php
+                                    $query= $conn->query("select id from apparatus");
+                                    echo $query->num_rows;
+                                ?>
+                                </h1>
                                 </div>
                                 <div class="col-8">
-                                    <h4 class="card-title">Apparatus</h4>
-                                    <a href="chemicals.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
+                                    <h4 class="card-title"><i class="fa fa-thermometer-half mr-3" style="font-size:2rem; color: orange;" aria-hidden="true"></i>Apparatus</h4>
+                                    <a href="apparatus.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
 
                                 </div>
                             </div>
@@ -65,12 +75,17 @@ include('./includes/header.php');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-4" style="display:flex;">
-                                    <i class="fa fa-themeisle" style="font-size:2rem; color: green;"  aria-hidden="true"></i>
-                                    <h1 class="text-center ml-4" style=" margin-top: -6px;">0</h1>
+                                    
+                                    <h1 class="text-center ml-4" style=" margin-top: -6px;">
+                                    <?php
+                                        $query= $conn->query("select id from equipment");
+                                        echo $query->num_rows;
+                                    ?>
+                                    </h1>
                                 </div>
                                 <div class="col-8">
-                                    <h4 class="card-title">Equipment</h4>
-                                    <a href="chemicals.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
+                                    <h4 class="card-title"><i class="fa fa-themeisle mr-3" style="font-size:2rem; color: green;"  aria-hidden="true"></i>Equipment</h4>
+                                    <a href="equipment.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
 
                                 </div>
                             </div>

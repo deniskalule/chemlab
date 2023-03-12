@@ -193,6 +193,32 @@ table, table tbody td
     background-color: #fff;
 }
 
+/* import section */
+.upload-box
+{
+    font-size: 16px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #000;
+    width: 350px;
+    outline: none;
+    padding: 3px 10px;
+    }
+
+::-webkit-file-upload-button
+{
+    color: white;
+    background: #206a5d;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 50px;
+    outline: none;
+
+}
+::-webkit-file-upload-button
+{
+    background: #438a5e;
+}
 
 /* chemicals section */
 .view_section
@@ -204,7 +230,7 @@ table, table tbody td
 {
     width: 100%;
 }
-
+/* 
 .tables.active
 {
     width: 65%;
@@ -214,7 +240,7 @@ table, table tbody td
 {
     width: 35%;
     /* display: inline-block; */
-}
+} */
 
 
 @media screen and (max-width: 770px) {

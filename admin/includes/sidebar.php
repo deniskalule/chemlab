@@ -42,22 +42,15 @@
                         </li>
                     </ul>
                 </div>
-            <!-- <a href=""> -->
-                <div class="home outer mb-2 p-2">
-                    <!-- <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i> -->
-                    <ul id="ul">
-                        <li style = "list-style-type: none;">
-                            <i class="fa fa-flask mr-2" aria-hidden="true"></i>
-                            <span class="caret">Chemicals</span>
-                            <ul class="nested">
-                                <a href="http://localhost/chemlab/admin/chemicals/add.php" class=" mb-2"><li>View</li></a>
-                                <a href="http://localhost/chemlab/admin/chemicals/add.php"><li>Add</li></a>
-                            </ul>
-                        </li>
-                    </ul>
+           
+            <a href="./chemicals.php">
+                <div class="home mb-2 p-2">
+                    <i class="fa fa-flask mr-2" aria-hidden="true"></i>
+                    <span>Chemicals</span>
                 </div>
-            <!-- </a> -->
-            <a href="">
+                
+            </a>
+            <a href="./apparatus.php">
                 <div class="home mb-2 p-2">
                     <i class="fa fa-thermometer-half mr-2" aria-hidden="true"></i>
                     <span>Apparatus</span>
