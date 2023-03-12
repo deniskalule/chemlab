@@ -1,4 +1,5 @@
 <?php
+include('./includes/session.php');
 
 include('./includes/header.php');
 
@@ -19,7 +20,7 @@ include('./includes/header.php');
         <!-- navbar -->
 
         <!-- inner-content -->
-        <div class="inner-content mt-4 p-3">
+        <div class="inner-content mt-2 p-3">
             <div class="row">
                 <div class="col-lg-4 col-sm-6">
                     <!-- cards -->
@@ -27,13 +28,13 @@ include('./includes/header.php');
                         
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-4" style="display:flex;">
                                     <i class="fa fa-flask" style="font-size:2rem; color: red;" aria-hidden="true"></i>
-                                    
+                                    <h1 class="text-center ml-4" style=" margin-top: -6px;">0</h1>
                                 </div>
                                 <div class="col-8">
                                     <h4 class="card-title">Chemicals</h4>
-                                    <p class="card-text">Text</p>
+                                    <a href="chemicals.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
                                 </div>
                             </div>
                         </div>
@@ -44,13 +45,14 @@ include('./includes/header.php');
                         
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-4" style="display:flex;">
                                 <i class="fa fa-thermometer-half" style="font-size:2rem; color: orange;" aria-hidden="true"></i>
-
+                                <h1 class="text-center ml-4" style=" margin-top: -6px;">0</h1>
                                 </div>
                                 <div class="col-8">
                                     <h4 class="card-title">Apparatus</h4>
-                                    <p class="card-text">Text</p>
+                                    <a href="chemicals.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
+
                                 </div>
                             </div>
                             
@@ -62,12 +64,14 @@ include('./includes/header.php');
                         
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-4" style="display:flex;">
                                     <i class="fa fa-themeisle" style="font-size:2rem; color: green;"  aria-hidden="true"></i>
+                                    <h1 class="text-center ml-4" style=" margin-top: -6px;">0</h1>
                                 </div>
                                 <div class="col-8">
                                     <h4 class="card-title">Equipment</h4>
-                                    <p class="card-text">Text</p>
+                                    <a href="chemicals.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
+
                                 </div>
                             </div>
                         </div>
@@ -153,7 +157,7 @@ include('./includes/header.php');
                 
             </div>
             
-            <div class="container mt-5">
+            <div class="container mt-2">
                 <div class="row">
                     <div class="col-lg-5 mr-3 p-3 bg-white">
                         <h5 class = "text-dark">Enquiries</h4>
@@ -193,7 +197,7 @@ include('./includes/header.php');
                         </div>
                     </div>
                     <!-- <div class="col-lg-1"></div> -->
-                    <div class="col-lg-5 p-3 mt-3 bg-white">
+                    <div class="col-lg-5 p-3 bg-white">
                         <h5 class = "text-dark">FAQs</h4>
                         <div class="enq-content mb-3">
                             <!-- sample message -->

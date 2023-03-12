@@ -1,4 +1,4 @@
-<div class="sidebar p-3 shadow" style="">
+    <div class="sidebar p-3 shadow" style="">
             <div class="head" style = "display:flex; margin: 20px 0;">
             <!-- <i class="fa fa-arrow-circle-left mr-4" id="btn" style="font-size:1.5rem; color: white;" aria-hidden="true"></i> -->
                 <h6 style="font-size: 17px;" class="text-center text-white">KYU Chemistry Lab</h6>
@@ -7,10 +7,18 @@
 
             <!-- <hr class="text-center mb-4" style="margin-top: 10PX;" color="white" height="20px"> -->
 
-            <div class="profile text-center mb-4">
+            <div class="profile bg-light text-center mb-4">
                 <a href="">
-                    <img src="../assets/images/kyulogo.jpg" class="mb-2" width="50" height="40" alt="">
-                    <p class="text-dark">Sample name</p>
+                    <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 2em;"></i>
+                    <?php
+                    
+                    $query = $conn->query("select * from admin");
+                    $row = $query->fetch_assoc();
+                    
+                    
+                    ?>
+                    <p class="text-dark"><?= $row['name'] ?></p>
+                    <p class="text-dark"style="font-size: 13px; margin-top: -15px;"><?= $row['email'] ?></p>
                     <!-- <hr class="text-center mb-4" style="margin-top: 10PX;" color="white" height="20px"> -->
                 </a>
             </div>
@@ -49,32 +57,19 @@
                     </ul>
                 </div>
             <!-- </a> -->
-            <div class="home outer mb-2 p-2">
-                    <!-- <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i> -->
-                    <ul id="ul">
-                        <li style = "list-style-type: none;">
-                            <i class="fa fa-thermometer-half mr-2" aria-hidden="true"></i>
-                            <span class="caret">Apparatus</span>
-                            <ul class="nested">
-                                <a href="" class=" mb-2"><li>View</li></a>
-                                <a href="" class="mb-2"><li>Add</li></a>
-                            </ul>
-                        </li>
-                    </ul>
+            <a href="">
+                <div class="home mb-2 p-2">
+                    <i class="fa fa-thermometer-half mr-2" aria-hidden="true"></i>
+                    <span>Apparatus</span>
                 </div>
-            <div class="home outer mb-2 p-2">
-                    <!-- <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i> -->
-                    <ul id="ul">
-                        <li style = "list-style-type: none;">
-                            <i class="fa fa-mixcloud mr-2" aria-hidden="true"></i>
-                            <span class="caret">Equipment</span>
-                            <ul class="nested">
-                                <a href="" class="mb-2"><li>View</li></a>
-                                <a href="" class="mb-2"><li>Add</li></a>
-                            </ul>
-                        </li>
-                    </ul>
+            </a>
+            <a href="./home.php">
+                <div class="home mb-2 p-2">
+                    <i class="fas fa-toolbox    mr-2"></i>
+                    <span>Equipment</span>
                 </div>
+                
+            </a>
             <div class="home outer mb-2 p-2">
                     <!-- <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i> -->
                     <ul id="ul">
@@ -88,16 +83,11 @@
                     </li>
                     </ul>
                 </div>
+            
             <a href="">
                 <div class="home mb-2 p-2">
-                    <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i>
-                    <span>Locations</span>
-                </div>
-            </a>
-            <a href="">
-                <div class="home mb-2 p-2">
-                    <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i>
-                    <span>Auditing and Reports</span>
+                    <i class="fas fa-file    mr-2"></i>
+                    <span>Reports</span>
                 </div>
             </a>
             

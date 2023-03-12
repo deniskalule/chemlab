@@ -16,14 +16,24 @@ body
 
 }
 
+
+.logo
+{
+    margin-top: 5%;
+}
 .form
 {
-    /* margin-top: 25%; */
+    margin-top: 5%;
     /* margin-bottom: 50%; */
-    padding: 20px 30px;
+    padding: 30px 20px;
     /* margin-left: 50%; */
     background: rgba(2, 2, 44, 0.733);
     border-radius: 0px 10px  10px 0px;
+}
+
+.form input
+{
+    height: 30px;
 }
 .form h4
 {
