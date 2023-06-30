@@ -1,26 +1,45 @@
-    <div class="sidebar p-3 shadow" style="">
-            <div class="head" style = "display:flex; margin: 20px 0;">
+    <div class="sidebar p-3 shadow">
+            <div class="head" style = "margin: 20px 0;">
             <!-- <i class="fa fa-arrow-circle-left mr-4" id="btn" style="font-size:1.5rem; color: white;" aria-hidden="true"></i> -->
-                <h6 style="font-size: 17px;" class="text-center text-white">KYU Chemistry Lab</h6>
+                <h6 style="font-size: 17px;" class="text-center">KYU Chemistry Lab</h6>
                 
             </div>
 
             <!-- <hr class="text-center mb-4" style="margin-top: 10PX;" color="white" height="20px"> -->
 
-            <div class="profile bg-light text-center mb-4">
-                <a href="">
+            <div class="profile text-center mb-4">
+                <a href="" class="text-white">
                     <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 2em;"></i>
+                    
                     <?php
-                    
-                    $query = $conn->query("select * from admin");
-                    $row = $query->fetch_assoc();
-                    
+                    // echo $_SESSION['role'];
+                    if($_SESSION['role'] == "Laboratory Technician")
+                    {
+                        ?>
+                            <p class=""><?= $user['fname'].' '.$user['lname'] ?></p>
+                            <p class=""style="font-size: 12px; margin-top: -15px;"><?= $user['email'] ?></p>
+                        <?php
+                    }
+                    if($_SESSION['role'] == "Chief Technician")
+                    {
+                        ?>
+                            <p class=""><?= $user['fname'].' '.$user['lname']?></p>
+                            <p class=""style="font-size: 12px; margin-top: -15px;"><?= $user['email'] ?></p>
+                        <?php
+                    }
+                    if($_SESSION['role'] == "admin")
+                    {
+                        ?>
+                            <p class=""><?= $admin['name'] ?></p>
+                            <p class=""style="font-size: 12px; margin-top: -15px;"><?= $admin['email'] ?></p>
+                            <!-- <hr class="text-center mb-4" style="margin-top: 10PX;" color="white" height="20px"> -->
+                        <?php
+                    }
                     
                     ?>
-                    <p class="text-dark"><?= $row['name'] ?></p>
-                    <p class="text-dark"style="font-size: 13px; margin-top: -15px;"><?= $row['email'] ?></p>
-                    <!-- <hr class="text-center mb-4" style="margin-top: 10PX;" color="white" height="20px"> -->
+                    
                 </a>
+
             </div>
             <a href="./home.php">
                 <div class="home mb-2 p-2">
@@ -29,19 +48,14 @@
                 </div>
                 
             </a>
-                <div class="home outer mb-2 p-2">
-                    <!-- <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i> -->
-                    <ul id="ul">
-                        <li style = "list-style-type: none;">
-                            <i class="fa fa-first-order mr-2" aria-hidden="true"></i>
-                            <span class="caret">Orders</span>
-                            <ul class="nested">
-                                <a href="" class="mb-2"><li>By student</li></a>
-                                <a href="" class="mb-2"><li>By Lecturer</li></a>
-                            </ul>
-                        </li>
-                    </ul>
+            <a href="./orders.php">
+                <div class="home mb-2 p-2">
+                    <i class="fas fa-hand-holding    "></i>
+                    <span>Orders</span>
                 </div>
+                
+            </a>
+                
            
             <a href="./chemicals.php">
                 <div class="home mb-2 p-2">
@@ -56,33 +70,51 @@
                     <span>Apparatus</span>
                 </div>
             </a>
-            <a href="./home.php">
+            <a href="./equipment.php">
                 <div class="home mb-2 p-2">
                     <i class="fas fa-toolbox    mr-2"></i>
                     <span>Equipment</span>
                 </div>
                 
             </a>
-            <div class="home outer mb-2 p-2">
-                    <!-- <i class="fa fa-arrow-circle-down mr-2" aria-hidden="true"></i> -->
-                    <ul id="ul">
-                        <li style = "list-style-type: none;">
-                            <i class="fa fa-user mr-2" aria-hidden="true"></i>
-                            <span class="caret">Users</span>
-                            <ul class="nested">
-                                <a href="http://localhost/chemlab/admin/chemicals/add.php" class=" mb-2"><li>Students</li></a>
-                                <a href="http://localhost/chemlab/admin/chemicals/add.php"><li>Lecturers</li></a>
-                            </ul>
-                    </li>
-                    </ul>
-                </div>
+            <?php
+             if($_SESSION['role'] == "admin")
+             {
+                 ?>
+                    <a href="./practicals.php">
+                        <div class="home mb-2 p-2">
+                            <i class="fas fa-users    mr-2"></i>
+                            <span>Practicals</span>
+                        </div>
+                        
+                    </a>
+                    <a href="./users.php">
+                        <div class="home mb-2 p-2">
+                            <i class="fas fa-users    mr-2"></i>
+                            <span>Users</span>
+                        </div>
+                        
+                    </a>
+                    
+                    
+                    <a href="">
+                        <div class="home mb-2 p-2">
+                            <i class="fas fa-file    mr-2"></i>
+                            <span>Reports</span>
+                        </div>
+                    </a>
+                 <?php
+             }
             
-            <a href="">
+            ?>
+            <a href="./practicals.php">
                 <div class="home mb-2 p-2">
-                    <i class="fas fa-file    mr-2"></i>
-                    <span>Reports</span>
+                    <i class="fas fa-users    mr-2"></i>
+                    <span>Practicals</span>
                 </div>
+                
             </a>
+            
             
             
         </div>

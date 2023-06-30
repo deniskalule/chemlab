@@ -8,6 +8,10 @@
 
 	$sql = "SELECT * FROM admin WHERE id = '".$_SESSION['admin']."'";
 	$query = $conn->query($sql);
-	$user = $query->fetch_assoc();
+	$admin = $query->fetch_assoc();
+
+	$sql2 = "SELECT * FROM staff_table WHERE id = '".$_SESSION['admin']."'";
+	$query2 = $conn->query($sql2);
+	$user = $query2->fetch_assoc();
 	
 ?>

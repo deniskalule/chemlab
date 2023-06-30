@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2023 at 06:58 PM
+-- Generation Time: May 29, 2023 at 08:15 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `name`, `password`, `modification_date`) VALUES
-(1, 'admin@kyu.ac.ug', 'Kivumbi Achilles', 'admin123', '2023-03-10');
+(1, 'admin@kyu.ac.ug', 'Dr Gumula Ivan', 'e10adc3949ba59abbe56e057f20f883e', '2023-03-10');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE `apparatus` (
 INSERT INTO `apparatus` (`id`, `name`, `quantity`, `location`, `modification_date`) VALUES
 (3, 'COTTON WOOL', 0, '', '0000-00-00'),
 (4, 'VOLUMETRIC FLASK(100mls)', 0, '', '0000-00-00'),
-(5, '                                50mls', 0, '', '0000-00-00'),
+(5, ' VOLUMETRIC FLASK                               50', 0, '', '0000-00-00'),
 (6, '                                 25mls', 0, '', '0000-00-00'),
 (7, 'MEASURING CYLINDER(250mls)', 0, '', '0000-00-00'),
 (8, 'ALCOHOL METER', 0, '', '0000-00-00'),
@@ -77,6 +77,50 @@ INSERT INTO `apparatus` (`id`, `name`, `quantity`, `location`, `modification_dat
 (16, 'BLENDER', 0, '', '0000-00-00'),
 (17, 'HEATING MANTLE', 0, '', '0000-00-00'),
 (18, 'NAME', 0, '', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `apparatus_orders`
+--
+
+CREATE TABLE `apparatus_orders` (
+  `id` int(11) NOT NULL,
+  `apparatus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `apparatus_orders`
+--
+
+INSERT INTO `apparatus_orders` (`id`, `apparatus_id`, `user_id`, `quantity`, `date`, `status`) VALUES
+(0, 13, 2, 1, '2023-05-14 10:27:21', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chemical_orders`
+--
+
+CREATE TABLE `chemical_orders` (
+  `id` int(11) NOT NULL,
+  `chemical_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `chemical_orders`
+--
+
+INSERT INTO `chemical_orders` (`id`, `chemical_id`, `user_id`, `quantity`, `date`, `status`) VALUES
+(1, 62, 2, 3, '2023-05-12 10:03:18', 0);
 
 -- --------------------------------------------------------
 
@@ -100,9 +144,7 @@ CREATE TABLE `equipment` (
 --
 
 INSERT INTO `equipment` (`id`, `name`, `specs`, `supplier`, `quantity`, `status`, `location`, `code`) VALUES
-(1, 'Analytical Balance', '4 d.p', 'Bieng distributers', 16, 'working', 'East End Lab', 'Bal/Anal/EED/001'),
-(2, '', 'INSTRUMENTS IN CHEMISTRY DEPARTMENT', '', 0, '', '', ''),
-(3, 'ITEM', 'Model/Specs', 'Supplier/Manufacturer', 0, 'STATUS', 'LOCATION', 'CODE'),
+(1, 'Analytical Balance', '4 d.p', 'Bieng distributers', 16, 'under maintenance', 'East End Lab', 'Bal/Anal/EED/001'),
 (4, 'Acetylene gas cylinder', 'medium size', '', 0, 'working', 'Eat End Lab', 'Gas/cyl/acet/EED/001'),
 (5, 'Armed test tubes', '', '', 58, '', 'Eat End Lab', ''),
 (6, 'Atomic absorption spectrometer', '240Z AA Atomic Absorption Spectrometer', 'Agilent Technologies', 1, 'under maimtenance', 'East End Lab', 'AAS/EED/001'),
@@ -112,7 +154,7 @@ INSERT INTO `equipment` (`id`, `name`, `specs`, `supplier`, `quantity`, `status`
 (10, 'Electrochemical analyser', '', '', 0, 'working', 'East End Lab', 'ElecChem/Anal/EED/001'),
 (11, 'Fire blanket ', '', '', 2, 'working', 'East End Lab', 'FireBlank/EED/001-002'),
 (12, 'Fume hood', '', '', 0, 'working', 'ADB', 'FumHood/ADB/Org/001'),
-(13, 'Freezer', 'NL-DF-6730, RG1740PHAMW', '', 2, 'working', 'ADB', 'Freez/ADB/Anal/001-002'),
+(13, 'Freezer', 'NL-DF-6730, RG1740PHAMW', '', 2, 'under maintenance', 'ADB', 'Freez/ADB/Anal/001-002'),
 (14, 'Gas chromatography GC-Clarus 480', 'Perkin Elmer', '', 0, 'working', 'ADB', 'GC/ADB/Anal/001'),
 (15, 'Hot plate', '', '', 3, 'working', 'ADB', 'HT/ADB/Anal/001-003'),
 (16, 'Hydrogen generator GC-HG-2200', 'Perkin Elmer', '', 0, 'working', 'ADB', 'H-GEN/ADB/Anal/001'),
@@ -144,6 +186,29 @@ INSERT INTO `equipment` (`id`, `name`, `specs`, `supplier`, `quantity`, `status`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `equipment_orders`
+--
+
+CREATE TABLE `equipment_orders` (
+  `id` int(11) NOT NULL,
+  `equipment_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `equipment_orders`
+--
+
+INSERT INTO `equipment_orders` (`id`, `equipment_id`, `user_id`, `quantity`, `date`, `status`) VALUES
+(1, 1, 2, 1, '2023-05-14 10:26:34', 0),
+(2, 7, 2, 1, '2023-05-14 10:26:34', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `organic`
 --
 
@@ -162,7 +227,7 @@ CREATE TABLE `organic` (
 --
 
 INSERT INTO `organic` (`id`, `compound`, `amount`, `expdate`, `location`, `category`, `modification_date`) VALUES
-(62, 'UNIVERSAL INDICATOR ', '14', '2023-04-09', 'cupboard one', 'organic', '0000-00-00'),
+(62, 'UNIVERSAL INDICATOR ', '17', '2023-04-09', 'cupboard one', 'organic', '0000-00-00'),
 (63, 'PYRIDINE DRIED', '3', '0000-00-00', '', 'organic', '0000-00-00'),
 (64, 'ACETIC ACID', '83', '0000-00-00', '', 'organic', '0000-00-00'),
 (65, 'PETROLEUM ETHER', '3', '0000-00-00', '', 'organic', '0000-00-00'),
@@ -220,25 +285,58 @@ INSERT INTO `organic` (`id`, `compound`, `amount`, `expdate`, `location`, `categ
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usertable`
+-- Table structure for table `staff_table`
 --
 
-CREATE TABLE `usertable` (
+CREATE TABLE `staff_table` (
+  `id` int(11) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contact` varchar(13) NOT NULL,
+  `role` varchar(30) NOT NULL,
+  `staff_ID` varchar(100) NOT NULL,
+  `department` varchar(100) NOT NULL,
+  `emp_status` varchar(100) NOT NULL,
+  `assigned_lab` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff_table`
+--
+
+INSERT INTO `staff_table` (`id`, `fname`, `lname`, `email`, `contact`, `role`, `staff_ID`, `department`, `emp_status`, `assigned_lab`, `password`) VALUES
+(1, 'Ronald', 'Kabanda', 'rkabanda@kyu.ac.ug', '0705098700', 'Lecturer', 'SC003', 'Department of Chemistry', 'Full Time', '', 'e10adc3949ba59abbe56e057f20f883e'),
+(2, 'Kizito', 'Musisi', 'kmusisi@kyu.ac.ug', '0775166528', 'Laboratory Technician', 'SP0078', 'Department of Chemistry', 'Part Time', 'East End', 'e10adc3949ba59abbe56e057f20f883e');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_table`
+--
+
+CREATE TABLE `student_table` (
   `id` int(4) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `course` varchar(50) DEFAULT NULL,
-  `year` varchar(4) DEFAULT NULL,
+  `fname` varchar(50) DEFAULT NULL,
+  `lname` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL
+  `contact` varchar(13) DEFAULT NULL,
+  `role` varchar(15) NOT NULL,
+  `course` varchar(100) NOT NULL,
+  `student_no` varchar(30) DEFAULT NULL,
+  `supervisor` varchar(100) NOT NULL,
+  `department` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `usertable`
+-- Dumping data for table `student_table`
 --
 
-INSERT INTO `usertable` (`id`, `name`, `course`, `year`, `email`, `password`) VALUES
-(2, 'kivumbi achilles', 'CHD', '3', '1800801896@std.kyu.ac.ug', '1800801896'),
-(3, 'nansikombi cathy', 'CHD', '3', '1900800356@std.kyu.ac.ug', '1900800356');
+INSERT INTO `student_table` (`id`, `fname`, `lname`, `email`, `contact`, `role`, `course`, `student_no`, `supervisor`, `department`, `password`) VALUES
+(7, 'Catheline', 'Nansikombi', '1900800118@std.kyu.ac.ug', '0756529218', 'Student', 'Chemical Engineering', '1900800118', 'Dr Gumula Ivan', 'Department of Chemistry', 'e10adc3949ba59abbe56e057f20f883e'),
+(8, 'Patricia', 'Apolot', '1900800261@std.kyu.ac.ug', '0758490918', 'Student', 'Chemical Engineering', '1900800261', 'Dr Gumula Ivan', 'Department of Chemistry', 'e10adc3949ba59abbe56e057f20f883e');
 
 --
 -- Indexes for dumped tables
@@ -257,9 +355,21 @@ ALTER TABLE `apparatus`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `chemical_orders`
+--
+ALTER TABLE `chemical_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `equipment`
 --
 ALTER TABLE `equipment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `equipment_orders`
+--
+ALTER TABLE `equipment_orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -269,9 +379,15 @@ ALTER TABLE `organic`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usertable`
+-- Indexes for table `staff_table`
 --
-ALTER TABLE `usertable`
+ALTER TABLE `staff_table`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_table`
+--
+ALTER TABLE `student_table`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -291,10 +407,22 @@ ALTER TABLE `apparatus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `chemical_orders`
+--
+ALTER TABLE `chemical_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `equipment`
 --
 ALTER TABLE `equipment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `equipment_orders`
+--
+ALTER TABLE `equipment_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `organic`
@@ -303,10 +431,16 @@ ALTER TABLE `organic`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
--- AUTO_INCREMENT for table `usertable`
+-- AUTO_INCREMENT for table `staff_table`
 --
-ALTER TABLE `usertable`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `staff_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `student_table`
+--
+ALTER TABLE `student_table`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

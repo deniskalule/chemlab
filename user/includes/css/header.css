@@ -1,11 +1,14 @@
 /* main */
 .main
 {
-    margin: 15px;
-    height: 98vh;
-    border-radius: 20px;
+    /* margin: 15px; */
+    height: 100vh;
+    /* border-radius: 20px; */
     display: flex;
     overflow: hidden;
+    position: fixed;
+    width:100%;
+  
 }
 
 a
@@ -19,15 +22,18 @@ a
 {
     background: #fff;
     width: 15%;
-    height: 98vh;
-    border-radius: 25px 0 0 25px;
-    /* display: none; */
+    height: 100vh;
     padding-top: 30px;
     color: #000;
     overflow: hidden;
 
 }
 
+.sidebar .head h6 
+{
+    color: #0b85b2;
+    font-size: 15px;
+}
 
 /* content */
 .content
@@ -37,6 +43,11 @@ a
 }
 
 .content.active
+{
+    width: 93%;
+}
+
+.content.active .navbar
 {
     width: 93%;
 }
@@ -84,10 +95,10 @@ a
 
 .sidebar .home
 {
-    color: #000;
+    color: #0b85b2;
     text-decoration: none;
+    margin-bottom: 10px;
 }
-
 
 .sidebar .home i
 {
@@ -95,7 +106,7 @@ a
 }
 .sidebar .home:hover
 {
-    color: rgb(210, 97, 4);
+    color: rgb(239, 134, 49);
 }
 .sidebar a .home span{
     font-size: 14px;
@@ -105,10 +116,9 @@ a
 
 .sidebar .profile
 {
-    background-color: #0b85b2;
+    background-color: #fff;
     margin: 0 -15px;
     padding: 10px;
-    color: #fff;
 }
 
 .sidebar .profile img
@@ -146,7 +156,6 @@ a{
     content: "\25B2";
     display: inline-block;
     margin-left: 50px;
-    float: right;
     transform: rotate(90deg);
     margin-top: 8px;
     
@@ -188,9 +197,38 @@ table, table tbody td
 /* navbar */
 .navbar
 {
+    position: fixed;
+    width: 85%;
+    top: 0;
+}
+
+.footer
+{
     position: relative;
     width: 100%;
-    top: 0;
+    bottom: 0;
+    /* justify-content: space-between; */
+    display: none;
+}
+.footer ul
+{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    height: 30px;
+
+}
+
+.footer ul a
+{
+    color: #fff;
+    margin-right: 4px;
+    text-decoration: none;
+}
+
+.footer ul a:hover
+{
+    color: rgb(221, 111, 20);
 }
 
 
@@ -198,26 +236,16 @@ table, table tbody td
 
 .content .inner-content
 {
-    height: 90vh;
+    height: 95vh;
     overflow: hidden;
     overflow-y: scroll;
     padding: 20px;
+    margin-left: 2%;
+    margin-top: 50px;
 
 }
 
-.inner-content::-webkit-scrollbar
-{
-    width: 1vw;
-}
-.inner-content::-webkit-scrollbar-thumb
-{
-    background-color: gray;
-}
 
-.inner-content::-webkit-scrollbar-track
-{
-    background-color: #fff;
-}
 
 /* import section */
 .upload-box
@@ -257,90 +285,49 @@ table, table tbody td
     width: 100%;
 }
 
-.card
-{
-    border-radius: 5px;
-    overflow: hidden;
-    border: none;
-    color: rgb(4, 4, 81);
-    min-height: 5px;
-    /* padding: -10px; */
-    /* display: none; */
-}
+/* welcome message */
 
-.small-cards .card
-{
-    height:80%;
-}
 
-.card a
+.chemicals .header
 {
+    background: #26baf1;
     color: #fff;
-    background-color: #3f4c4f;
-    text-decoration: none;
+    padding: 4px 12px;
+    display: flex;
+    justify-content: space-between  ;
 }
 
-.card .card1:hover
+.chemicals .header a
 {
-    background-color: #e54040;
+    color:#fff;
 }
 
-.card .card2:hover
+.chemicals .header a:hover
 {
-    background-color: #ca5e05;
+    color: rgb(221, 111, 20);
 }
-.card .card3:hover
+
+
+.products .product-item
 {
-    background-color: #014903;
+    height: 120px;  
+    /* font-size: 12px; */
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+    margin: 0 -10px;
+    background-color: #fff;
 }
 
-.card p
+.product-item a p
 {
-    margin-top: -14px;
-    font-size: 14px;
+    margin-top: -7px;
 }
 
-.card span
+.products .product-item:hover
 {
-    font-size: 18px;
-    margin-right: 5px;
-    font-weight: 700;
+    background: rgb(221, 111, 20);
+    color: #fff;
+
 }
-
-
-@media screen and (max-width: 770px) {
-    
-    .sidebar.active
-    {
-        width: 40px;
-        margin-right: 20px;
-        /* display: none; */
-    }
-    .sidebar.active .head
-    {
-        display: none;
-    }
-    .sidebar.active .profile
-    {
-        display: none;
-    }
-    .sidebar.active .home
-    {
-        display: none;
-    }
-
-    .content .card
-    {
-        margin-left: 30px;
-    }
-
-    .card
-    {
-        
-    }
-    .content .enq-content
-    {
-        margin-left: 30px;
-    }
-    }
 

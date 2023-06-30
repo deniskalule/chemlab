@@ -58,25 +58,20 @@ include('./includes/header.php');
             
             <!-- buttons -->
             <div class="header" style="display: flex;">
-                <button id="1" class="btn-primary add mb-2 btn-sm pull-right" style="margin-left: 2%;">Add apparatus</button>
-
-                <button id="1" class="btn-primary view mb-2 btn-sm pull-right" style="margin-left: 2%;">View apparatus</button>
-                <form action="./backend/import_excel2.php" method="post" enctype="multipart/form-data" class="ml-5" style="display: flex; margin-bottom:10px;">
-                    <input type="file" name="import_file" id="" class="upload-box">
-                    <button type="submit" class="btn btn-success btn-sm btn-flat" name="import" style="margin-left:-50px;">import</button>
-                </form>
+                <button class="btn-primary add-apparatus mb-2 btn-sm pull-right" style="margin-left: 2%;">Add Apparatus</button>
+                
             </div>
             <!-- buttons -->
 
-            <div class="row" id="view-section" style="font-size:13px; margin-left: 2%;">
-                <div class="col-8 tables mt-3">
+            <div class="row" id="table-section" style="font-size:13px;">
+                <div class="col-12 tables mt-2">
                     <!-- organic -->
                     <div class="apparatus">
                         <div class="header">
                             <h5>Apparatus</h5>
                             <hr>
                         </div>
-                        <table class="table bg-white m-2" id="table2">
+                        <table class="table bg-white m-2" id="table">
                             <thead class = "bg-dark">
                                 <tr class="text-white">
                                     <th scope="col">#</th>
@@ -88,13 +83,22 @@ include('./includes/header.php');
                             </thead>
                             <tbody>
                                 <?php
-                                    $result = $conn->query("select * from apparatus");
+                                    if($_SESSION['role'] === "Laboratory Technician")
+                                    {
+                                        $location = $user['assigned_lab'];
+                                        $result = $conn->query("select * from apparatus where location='$location'");
+                                    }
+                                    else
+                                    {
+                                        $result = $conn->query("select * from apparatus");
+                                    }
+                                    $count = 1;
                                     while($row = $result->fetch_assoc())
                                     {
                                     
                                 ?>
                                 <tr>
-                                    <td scope="row"><?= $row['id']; ?></td>
+                                    <td scope="row"><?= $count; ?></td>
                                     <td><?= $row['name']; ?></td>
                                     <td><?= $row['quantity']; ?></td>
                                     <td><?= $row['location']; ?></td>
@@ -104,7 +108,7 @@ include('./includes/header.php');
                                     </td>
                                 </tr>
                                 <?php
-                                    
+                                    $count ++;
                                 }
                                 ?>
                                 
@@ -120,33 +124,56 @@ include('./includes/header.php');
                 </div>
             </div>
 
-            <!-- add chemical form -->
-            <div class="col-lg-7 " id="display">
-                    
-                    
-                    <form action="./backend/addapparatus.php" method="post" class="form bg-white p-5">
-                        <h6 class="text-uppercase mb-3">Enter a new apparatus</h6>
-                        <div class="form-group">
-                            <label for="">Apparatus Name:</label>
-                            <input type="text" name="name" class="form-control" required>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col">
-                                <label for="">Quantity: </label>
-                                <input type="number" name = "quantity" class="form-control" required>
+            <section id="add-apparatus" style="display:none;">
+                <div class="row p-2">
+                    <!-- drop or drag file -->
+                    <div class="col-lg-5">
+                        <div class="drop bg-white shadow p-3 rounded">
+                            <div class="header">
+                                <h5 class="title">Add-apparatus</h5>
                             </div>
-                            
+                            <div class="body">
+                                <div class="container-fluid">
+                                    <div class="drop-file rounded" style="border:1px dotted black; height: 40vh;">
+                                        <h6 class="text-center" style="color: #000a; margin: 30% 0">Drop or Drag Files Here</h6>
+                                    </div>
+                                    <form action="./backend/import_excel.php" method="post" enctype="multipart/form-data" class="mt-3" style="display: flex; margin-bottom:10px;">
+                                        <input type="file" name="import_file" id="" class="upload-box">
+                                        <button type="submit" class="btn btn-success btn-sm btn-flat" name="import" style="margin-left:-50px;">import</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Location</label>
-                            <input type="text" name="location" class="form-control" required>
+                    </div>
+                    <!-- form for creating user -->
+                    <div class="col-lg-7">
+                        <div class="form shadow p-3 rounded">
+                            <form action="./backend/addapparatus.php" method="post" class="form bg-white p-5">
+                                <h6 class="text-uppercase mb-3">Enter a new apparatus</h6>
+                                <div class="form-group">
+                                    <label for="">Apparatus Name:</label>
+                                    <input type="text" name="name" class="form-control" required>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col">
+                                        <label for="">Quantity: </label>
+                                        <input type="number" name = "quantity" class="form-control" required>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Location</label>
+                                    <input type="text" name="location" class="form-control" required>
 
+                                </div>
+                                
+                                <button class="btn-primary form-control" name = "add">Add</button>
+                            </form>
                         </div>
-                        
-                        <button class="btn-primary form-control" name = "add">Add</button>
-                    </form>
+                    </div>
                 </div>
-            <!-- add chemical form -->
+            </section>
+           
 
 
         </div>
@@ -168,3 +195,15 @@ include('./includes/header.php');
 include('./includes/footer.php');
 
 ?>
+
+<script>
+  $(document).ready(function () {
+    $('.add-apparatus').click(function (e) { 
+      e.preventDefault();
+    //   alert("success");
+    $('#add-apparatus').show();
+    $('#table-section').hide();
+    });
+
+  });
+</script>

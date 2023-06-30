@@ -18,13 +18,29 @@ include('./includes/header.php');
         <!-- navbar -->
         <?php include('./includes/navbar.php') ?>
         <!-- navbar -->
-
+        <?php
+                if(isset($_SESSION['success'])){
+                    echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong>'.$_SESSION['success'].'</strong>
+                    </div>
+                    ';
+                    unset($_SESSION['success']);
+                }
+            ?>  
+             
         <!-- inner-content -->
         <div class="inner-content mt-2 p-3">
+            
             <div class="row">
+                
                 <div class="col-lg-4 col-sm-6">
                     <!-- cards -->
-                    <div class="card mb-3">
+                    <div class="card shadow bg-white mb-3">
                         
                         <div class="card-body">
                             <div class="row">
@@ -38,15 +54,15 @@ include('./includes/header.php');
                                     </h1>
                                 </div>
                                 <div class="col-8">
-                                    <h4 class="card-title"><i class="fa fa-flask mr-3" style="font-size:2rem; color: red;" aria-hidden="true"></i>Chemicals</h4>
-                                    <a href="chemicals.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
+                                    <h5 class="card-title"><i class="fa fa-flask mr-3" style="font-size:2rem; color: red;" aria-hidden="true"></i>Chemicals</h5>
+                                    <a href="chemicals.php" class="card1 form-control">More Info</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <div class="card mb-3">
+                    <div class="card shadow bg-white mb-3">
                         
                         <div class="card-body">
                             <div class="row">
@@ -60,8 +76,8 @@ include('./includes/header.php');
                                 </h1>
                                 </div>
                                 <div class="col-8">
-                                    <h4 class="card-title"><i class="fa fa-thermometer-half mr-3" style="font-size:2rem; color: orange;" aria-hidden="true"></i>Apparatus</h4>
-                                    <a href="apparatus.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
+                                    <h5 class="card-title"><i class="fa fa-thermometer-half mr-3" style="font-size:2rem; color: orange;" aria-hidden="true"></i>Apparatus</h5>
+                                    <a href="apparatus.php" class="form-control card2">More Info</a>
 
                                 </div>
                             </div>
@@ -70,7 +86,7 @@ include('./includes/header.php');
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <div class="card mb-3">
+                    <div class="card shadow bg-white mb-3">
                         
                         <div class="card-body">
                             <div class="row">
@@ -84,8 +100,8 @@ include('./includes/header.php');
                                     </h1>
                                 </div>
                                 <div class="col-8">
-                                    <h4 class="card-title"><i class="fa fa-themeisle mr-3" style="font-size:2rem; color: green;"  aria-hidden="true"></i>Equipment</h4>
-                                    <a href="equipment.php" class="bg-secondary text-white form-control" style = "list-style-type: none; height:40px; margin-bottom:-15px;">More Info</a>
+                                    <h5 class="card-title"><i class="fa fa-themeisle mr-3" style="font-size:2rem; color: green;"  aria-hidden="true"></i>Equipment</h5>
+                                    <a href="equipment.php" class="form-control card3">More Info</a>
 
                                 </div>
                             </div>
@@ -94,151 +110,190 @@ include('./includes/header.php');
                 </div>
                 
             </div>
-            <div class="row mt-3">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card mb-3">
+            <div class="row small-cards pt-3" style="background-color: #0001;">
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card shadow mb-3">
                         
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
-                                    <i class="fa fa-user"style="font-size:2rem; color: blue;" aria-hidden="true" aria-hidden="true"></i>
+                                    <i class="fa fa-user"style="font-size:1rem; color: blue;" aria-hidden="true" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-9">
-                                    <h4 class="card-title">Users</h4>
+                                    <h6 class="card-title">Users</h6>
                                     <hr>
-                                    <p class="card-text">0 Students</p>
-                                    <p class="card-text">0 Lecturers</p>
+                                    <p class="card-text" style="margin-left:-10px;">
+                                    <span><?php
+                                        $query= $conn->query("select id from student_table");
+                                        echo $query->num_rows;
+                                    ?></span>
+                                    Students</p>
+                                    <p class="card-text" style="margin-left:-10px;">
+                                    <span>
+                                    <?php
+                                        $query= $conn->query("select id from staff_table");
+                                        echo $query->num_rows;
+                                    ?> 
+
+                                    </span>
+                                    Staff</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card mb-3">
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card shadow mb-3">
                         
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
-                                    <i class="fa fa-themeisle" style="font-size:2rem; color: blue;" aria-hidden="true"></i>
+                                    <i class="fa fa-themeisle" style="font-size:1rem; color: blue;" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-9">
-                                    <h4 class="card-title">Orders</h4>
+                                    <h6 class="card-title">Orders</h6>
                                     <hr>
-                                    <p class="card-text">0 Equipment</p>
-                                    <p class="card-text">0 Chemicals</p>
+                                    <p class="card-text" style="margin-left:-25px; margin-top: -20px;"><span>
+                                        <?php
+                                            $select = $conn->query("select id from chemical_orders");
+                                            echo $select->num_rows;
+                                        ?>
+                                    </span> Chemicals</p>
+                                    <p class="card-text" style="margin-left:-25px; margin-top: -20px;"><span>
+                                        <?php
+                                            $select = $conn->query("select id from equipment_orders");
+                                            echo $select->num_rows;
+                                        ?>
+                                    </span> Equipment</p>
+                                    <p class="card-text" style="margin-left:-25px; margin-top: -20px;"><span>
+                                        <?php
+                                            $select = $conn->query("select id from apparatus_orders");
+                                            echo $select->num_rows;
+                                        ?>
+                                    </span> Apparatus</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card mb-3">
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card shadow mb-3">
                         
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
                                     <!-- <i class="fa fa-user" style="font-size:2rem; color: blue;" aria-hidden="true"></i> -->
-                                    <i class="fa fa-bell" style="font-size:2rem; color: blue;" aria-hidden="true"></i>
+                                    <i class="fa fa-bell" style="font-size:1rem; color: blue; margin-left: -5px;" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-9">
-                                    <h4 class="card-title">Issued (C)</h4>
+                                    <h6 class="card-title" style="margin-left:-15px;">Issued (C)</h6>
                                     <hr>
-                                    <p class="card-text">0 to Students</p>
-                                    <p class="card-text">0 to Lecturers</p>
+                                    <p class="card-text" style="margin-left:-25px;"><span>0</span> to Students</p>
+                                    <p class="card-text" style="margin-left:-25px;"><span>0</span> to Lecturers</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card mb-3">
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card shadow mb-3">
                         
                         <div class="card-body">
                             <div class="row">
-                            <div class="col-3">
+                                <div class="col-3">
                                     <!-- <i class="fa fa-user" style="font-size:2rem; color: blue;" aria-hidden="true"></i> -->
-                                    <i class="fa fa-bell" style="font-size:2rem; color: blue;" aria-hidden="true"></i>
+                                    <i class="fa fa-bell" style="font-size:1rem; color: blue; margin-left: -5px;" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-9">
-                                    <h4 class="card-title">Issued (E)</h4>
+                                    <h6 class="card-title" style="margin-left:-15px;">Issued (E)</h6>
                                     <hr>
-                                    <p class="card-text">0 to Students</p>
-                                    <p class="card-text">0 to Lecturers</p>
+                                    <p class="card-text" style="margin-left:-25px;"><span>0</span> to Students</p>
+                                    <p class="card-text" style="margin-left:-25px;"><span>0</span> to Lecturers</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card shadow mb-3">
+                        
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <!-- <i class="fa fa-user" style="font-size:2rem; color: blue;" aria-hidden="true"></i> -->
+                                    <i class="fa fa-bell" style="font-size:1rem; color: blue; margin-left: -5px;" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-9">
+                                    <h6 class="card-title" style="margin-left:-15px;">Issued (A)</h6>
+                                    <hr>
+                                    <p class="card-text" style="margin-left:-25px;"><span>0</span> to Students</p>
+                                    <p class="card-text" style="margin-left:-25px;"><span>0</span> to Lecturers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-6">
+                    <div class="card shadow mb-3">
+                        
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <!-- <i class="fa fa-user" style="font-size:2rem; color: blue;" aria-hidden="true"></i> -->
+                                    <i class="fa fa-bell" style="font-size:1rem; color: blue; margin-left: -5px;" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-9">
+                                    <h6 class="card-title" style="margin-left:-15px;">Pending</h6>
+                                    <hr>
+                                    <p class="card-text" style="margin-left:-25px; margin-top: -20px;"><span>
+                                        <?php
+                                            $select = $conn->query("select id from chemical_orders where status = 0");
+                                            echo $select->num_rows;
+                                        ?>
+                                    </span> Orders (C)</p>
+                                    <p class="card-text" style="margin-left:-25px; margin-top: -20px;"><span>
+                                        <?php
+                                            $select = $conn->query("select id from equipment_orders where status = 0");
+                                            echo $select->num_rows;
+                                        ?>
+                                    </span> Orders (E)</p>
+                                    <p class="card-text" style="margin-left:-25px; margin-top: -20px;"><span>
+                                        <?php
+                                            $select = $conn->query("select id from apparatus_orders where status = 0");
+                                            echo $select->num_rows;
+                                        ?>
+                                    </span> Orders (A)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 
             </div>
             
-            <div class="container mt-2">
+            <div class="container mt-4">
                 <div class="row">
-                    <div class="col-lg-5 mr-3 p-3 bg-white">
-                        <h5 class = "text-dark">Enquiries</h4>
-                        <div class="enq-content mb-3">
-                            <!-- sample message -->
-                            <div class="message mb-3">
-                                <div class="image">
-                                    <i class="fa fa-user" style="font-size:1.5rem; color: blue;" aria-hidden="true"></i>
-                                    <p class = "ml-3" style = "font-size: 15px;">Sample Name</p>
-                                    <hr>
+                    <div class="col-lg-9">
+                        
+                        <h5 class="mb-3">Statistics</h5>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="box bg-white p-2">
+                                    <canvas id="my1" style="font-size: 11px;"></canvas>
                                 </div>
-                                <div class="text ml-4 ">
-                                    <p style = "font-size: 13px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque commodi rem est.</p>
-                                </div>
-                                <div class="actions ml-4">
-                                    <i class="fa fa-reply-all" aria-hidden="true"></i>
-                                    <span>Reply</span>
-                                </div>
-                                <hr>
                             </div>
-                            <div class="message mb-3">
-                                <div class="image">
-                                    <i class="fa fa-user" style="font-size:1.5rem; color: blue;" aria-hidden="true"></i>
-                                    <p class = "ml-3" style = "font-size: 15px;">Sample Name</p>
-                                    <hr>
+                            <div class="col-lg-8 col-md-6">
+                                <div class="box bg-white p-1">
+                                    <canvas id="mychart"></canvas>
                                 </div>
-                                <div class="text ml-4 ">
-                                    <p style = "font-size: 13px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque commodi rem est.</p>
-                                </div>
-                                <div class="actions ml-4">
-                                    <i class="fa fa-reply-all" aria-hidden="true"></i>
-                                    <span>Reply</span>
-                                </div>
-                                <hr>
                             </div>
-
                         </div>
                     </div>
-                    <!-- <div class="col-lg-1"></div> -->
-                    <div class="col-lg-5 p-3 bg-white">
-                        <h5 class = "text-dark">FAQs</h4>
-                        <div class="enq-content mb-3">
-                            <!-- sample message -->
-                            <div class="message mb-3">
-                                <div class="image">
-                                    <i class="fa fa-user" style="font-size:1.5rem; color: blue;" aria-hidden="true"></i>
-                                    <p class = "ml-3" style = "font-size: 15px;">Sample Name</p>
-                                    <hr>
-                                </div>
-                                <div class="text ml-4 ">
-                                    <p style = "font-size: 13px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque commodi rem est.</p>
-                                </div>
-                                <hr>
-                            </div>
-                            <div class="message mb-3">
-                                <div class="image">
-                                    <i class="fa fa-user" style="font-size:1.5rem; color: blue;" aria-hidden="true"></i>
-                                    <p class = "ml-3" style = "font-size: 15px;">Sample Name</p>
-                                    <hr>
-                                </div>
-                                <div class="text ml-4 ">
-                                    <p style = "font-size: 13px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque commodi rem est.</p>
-                                </div>
-                                <hr>
-                            </div>
-
+                    <div class="col-lg-3 p-3">
+                        <div>
+                            <h6>Recent orders</h6>
+                            <hr />
                         </div>
                     </div>
                     

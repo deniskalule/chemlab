@@ -1,7 +1,8 @@
 <script>
     $(document).ready( function () {
+        $('#table').dataTable();
         $('#table1').dataTable();
-        $('#table2').dataTable();
+        $('#table3').dataTable();
         // alert('success');
         document.getElementById("view-section").style.display = "none";
 
@@ -161,3 +162,121 @@
     
 </script>
 <!-- vieweing the chemicals -->
+
+<!-- graphs -->
+<script>
+  const labels = ['s1','s2','s3','s4','s5'];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Found items',
+      backgroundColor: 'rgb(0,0,100)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [30,10,20,70,50],
+      
+      },
+    ]
+  };
+
+  const label = ['s1','s2','s3'];
+
+  const data1 = {
+    labels: label,
+    datasets: [{
+      label: 'Lost Items',
+      backgroundColor: 'rgb(0,100,100)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [30,40,20],
+    },
+    ]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  const config1 = {
+    type: 'doughnut',
+    data: data1,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('mychart'),
+    config
+  );
+  const my1 = new Chart(
+    document.getElementById('my1'),
+    config1
+  );
+</script>
+
+
+<script>
+    $('.lecturer_show').hide();
+    $('.lab_attendant_show').hide();
+
+    $('.student').click(function () {
+      $('.student_show').show();
+      $('.lecturer_show').hide();
+      $('.lab_attendant_show').hide();
+      $('.chief_show').hide();
+    });
+
+    $('.lecturer').click(function () {
+      $('.lecturer_show').show();
+      $('.student_show').hide();
+      $('.lab_attendant_show').hide();
+      $('.chief_show').hide();
+    });
+    $('.lab_attendant').click(function () {
+      $('.lab_attendant_show').show();
+      $('.lecturer_show').hide();
+      $('.student_show').hide();
+      $('.chief_show').hide();
+    });
+    $('.chief').click(function () {
+      $('.lab_attendant_show').hide();
+      $('.lecturer_show').hide();
+      $('.student_show').hide();
+      $('.chief_show').show();
+    });
+
+</script>
+
+
+<script>
+    $('.apparatus_show').hide();
+    $('.equipment_show').hide();
+
+    $('.chemical-btn').click(function () {
+      $('.chemical_show').show();
+      $('.apparatus_show').hide();
+      $('.equipment_show').hide();
+    });
+
+    $('.apparatus-btn').click(function () {
+      $('.chemical_show').hide();
+      $('.apparatus_show').show();
+      $('.equipment_show').hide();
+    });
+    $('.equipment-btn').click(function () {
+      $('.chemical_show').hide();
+      $('.apparatus_show').hide();
+      $('.equipment_show').show();
+    });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $('.add').click(function (e) { 
+      e.preventDefault();
+      alert("success");
+    });
+  });
+</script>
+
+

@@ -7,39 +7,69 @@ if(isset($_POST['login']))
 {
     echo $email = $_POST['email'];
     echo $password = $_POST['password'];
+    $password = md5($password);
 
     $select = "select * from admin";
-
     $result = $conn->query($select);
     
-    while($row = $result->fetch_assoc())
+    if($result->num_rows > 0)
     {
-        echo $email2 = $row['email'];
-        echo $pass = $row['password'];
-        $id = $row['id'];
+        while($row = $result->fetch_assoc())
+        {
+            $email2 = $row['email'];
+            $pass = $row['password'];
+            $id = $row['id'];
+        }
+
+        // echo $x = strcasecmp($password, $pass);
+        // echo $y = strcasecmp($email, $email2);
+
+        if(strcasecmp($password, $pass)==0 && strcasecmp($email, $email2)==0)
+        {
+            $_SESSION['admin'] = $id;
+            $_SESSION['role'] = "admin";
+        }
+
+        else
+        {
+            $_SESSION['error'] = 'Incorrect username or password';
+        }
     }
 
-    echo $x = strcasecmp($password, $pass);
-    echo $y = strcasecmp($email, $email2);
-
-    if(strcasecmp($password, $pass)==0 && strcasecmp($email, $email2)==0)
+    $sql = $conn->query("select * from staff_table where email = '$email'");
+    if($sql->num_rows > 0)
     {
-        echo "success";
-        $_SESSION['admin'] = $id;
-    }
+        $staff = $sql->fetch_assoc();
+        $email2 = $staff['email'];
+        $pass = $staff['password'];
+        $id = $staff['id'];
+        echo $role = $staff['role'];
+        if(strcasecmp($password, $pass)==0 && strcasecmp($email, $email2)==0)
+        {
+            $_SESSION['admin'] = $id;
+            echo $_SESSION['role'] = $role;
+        }
 
-    else
-    {
-        $_SESSION['error'] = 'Incorrect username or password';
+        else
+        {
+            $_SESSION['error'] = 'Incorrect username or password';
+        }
     }
 
 
 }
 else{
-    $_SESSION['error'] = 'Input voter credentials first';
+    $_SESSION['error'] = 'Input admin credentials first';
 }
 
-header('location: index.php');
+if(!headers_sent())
+{
+    header("location: index.php");
+}
+else
+{
+    header("location: index.php");
+}
 
 
 ?>

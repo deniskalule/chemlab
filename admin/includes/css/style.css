@@ -5,16 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body
-{
-    background-image: url('./assets/images/lab-g5f486f62b_1280.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    /* height: 150vh; */
 
-}
 
 
 .logo
@@ -27,17 +18,19 @@ body
     /* margin-bottom: 50%; */
     padding: 30px 20px;
     /* margin-left: 50%; */
-    background: rgba(2, 2, 44, 0.733);
+    background: rgb(4, 4, 81);
     border-radius: 0px 10px  10px 0px;
 }
 
 .form input
 {
-    height: 30px;
+    height: 40px;
 }
-.form h4
+.form .btn
 {
-    color: rgb(202, 84, 29);
+    background-color: rgb(202, 84, 29);
+    color: #fff;
+
 }
 .form a
 {
@@ -48,4 +41,11 @@ body
 {
     color: rgb(202, 84, 29);
     
+}
+
+.container
+{
+    position: fixed;
+    top: 1%;
+    /* left: 3%; */
 }
