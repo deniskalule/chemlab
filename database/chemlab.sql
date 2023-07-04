@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 08:15 AM
+-- Generation Time: Jul 04, 2023 at 09:34 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -98,7 +98,7 @@ CREATE TABLE `apparatus_orders` (
 --
 
 INSERT INTO `apparatus_orders` (`id`, `apparatus_id`, `user_id`, `quantity`, `date`, `status`) VALUES
-(0, 13, 2, 1, '2023-05-14 10:27:21', 0);
+(1, 13, 7, 1, '2023-07-01 12:21:18', 0);
 
 -- --------------------------------------------------------
 
@@ -120,7 +120,7 @@ CREATE TABLE `chemical_orders` (
 --
 
 INSERT INTO `chemical_orders` (`id`, `chemical_id`, `user_id`, `quantity`, `date`, `status`) VALUES
-(1, 62, 2, 3, '2023-05-12 10:03:18', 0);
+(1, 62, 7, 3, '2023-07-01 11:53:12', 0);
 
 -- --------------------------------------------------------
 
@@ -203,8 +203,56 @@ CREATE TABLE `equipment_orders` (
 --
 
 INSERT INTO `equipment_orders` (`id`, `equipment_id`, `user_id`, `quantity`, `date`, `status`) VALUES
-(1, 1, 2, 1, '2023-05-14 10:26:34', 0),
-(2, 7, 2, 1, '2023-05-14 10:26:34', 0);
+(1, 1, 7, 1, '2023-07-01 12:32:16', 0),
+(2, 7, 8, 1, '2023-07-01 12:32:19', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laboratory`
+--
+
+CREATE TABLE `laboratory` (
+  `id` int(11) NOT NULL,
+  `lab_code` varchar(100) NOT NULL,
+  `lab_name` varchar(100) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laboratory`
+--
+
+INSERT INTO `laboratory` (`id`, `lab_code`, `lab_name`, `date`) VALUES
+(1, '', '', '2023-07-01 18:57:29'),
+(2, 'Chem 01', 'West End Laboratory', '2023-07-01 18:58:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`id`, `user_id`, `name`, `role`, `action`, `date`) VALUES
+(16, 7, 'Nansikombi Catheline', 'Student', 'Logged In', '2023-07-01 18:29:57'),
+(17, 7, 'Nansikombi Catheline', 'Student', 'Logged Out', '2023-07-01 18:34:45'),
+(18, 1, 'Kabanda Ronald', 'Lecturer', 'Logged In', '2023-07-01 18:36:08'),
+(19, 1, 'Kabanda Ronald', 'Lecturer', 'Logged Out', '2023-07-01 18:36:36'),
+(20, 1, 'Dr Gumula Ivan', 'admin', 'Logged In', '2023-07-01 19:11:39'),
+(21, 1, 'Dr Gumula Ivan', 'admin', 'Logged Out', '2023-07-01 19:19:46');
 
 -- --------------------------------------------------------
 
@@ -355,6 +403,12 @@ ALTER TABLE `apparatus`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `apparatus_orders`
+--
+ALTER TABLE `apparatus_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `chemical_orders`
 --
 ALTER TABLE `chemical_orders`
@@ -370,6 +424,18 @@ ALTER TABLE `equipment`
 -- Indexes for table `equipment_orders`
 --
 ALTER TABLE `equipment_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `laboratory`
+--
+ALTER TABLE `laboratory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -407,6 +473,12 @@ ALTER TABLE `apparatus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `apparatus_orders`
+--
+ALTER TABLE `apparatus_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `chemical_orders`
 --
 ALTER TABLE `chemical_orders`
@@ -423,6 +495,18 @@ ALTER TABLE `equipment`
 --
 ALTER TABLE `equipment_orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `laboratory`
+--
+ALTER TABLE `laboratory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `organic`

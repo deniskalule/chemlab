@@ -12,8 +12,9 @@ if(isset($_POST['id']))
         <div class="row" style="margin: 0 -30px">
             <div class="col-lg-6">
                 <div class="details bg-white p-3 rounded">
-                    <div class="header">
+                    <div class="header d-flex justify-content-between">
                         <h6 class="text-uppercase" style="color:#26baf1;"><b>Compound Details</b><h6>
+                        <a href="" class="btn btn-sm btn-outline-secondary">x</a>
                         <hr>
                     </div>
                     <div class="compound-details">

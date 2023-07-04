@@ -394,7 +394,21 @@ include('./includes/header.php');
                                                 </div>
                                                 <div class="form-group col">
                                                     <label for="">Assigned laboratory: </label>
-                                                    <input type="text" name="assigned_lab" class="form-control" >
+                                                    <!-- <input type="text" name="assigned_lab" class="form-control" > -->
+                                                    <select name="assigned lab" class="form-control">
+                                                        <option selected> --- select ---</option>
+                                                        <?php
+                                                        $select = $conn->query("select * from laboratory");
+                                                        while($row = $select->fetch_assoc())
+                                                        {
+                                                            ?>
+                                                                <option value="<?= $row['lab_code'] ?>"><?= $row['lab_code'] ?></option>
+
+                                                            <?php
+                                                        }
+                                                        ?>
+
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

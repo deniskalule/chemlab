@@ -49,10 +49,10 @@ include('./includes/header.php');
                         <a href="./orders.php" class="btn"><i class="fas fa-arrow-circle-right    "></i></a>
                     </div>
                 </div>
-                <div class="home-cards2">
+                <div class="">
                     <div class="card-deck" >
                         <div class="card text-center shadow rounded">
-                            <div class="card-body" style="margin-top :-10px;">
+                            <div class="card-body" style="">
                                 
                                 <p class="card-text" style="font-size: 2rem; font-weight: 900;">
                                 <?php 

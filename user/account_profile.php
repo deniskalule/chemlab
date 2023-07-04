@@ -44,7 +44,7 @@ include('./includes/header.php');
               <div class="profile bg-info mt-5 p-3 rounded">
                 <h4 class="text-white"> Account Profile</h4>
                 <div class=" mt-4">
-                    <p style="color:rgb(221, 111, 20);"> Welcome <span class="text-uppercase"><b><?= $user['name'] ?></b></span></p>
+                    <p style="color:rgb(221, 111, 20);"> Welcome <span class="text-uppercase"><b><?= $user['lname']. ' ' . $user['fname'] ?></b></span></p>
                     <p class="text-white" style="margin-top: -10px;"><?= $user['email'] ?></p>
                 </div>
               </div>

@@ -19,6 +19,7 @@ if(isset($_POST['login']))
             $email2 = $row['email'];
             $pass = $row['password'];
             $id = $row['id'];
+            $name = $row['name'];
         }
 
         // echo $x = strcasecmp($password, $pass);
@@ -26,8 +27,13 @@ if(isset($_POST['login']))
 
         if(strcasecmp($password, $pass)==0 && strcasecmp($email, $email2)==0)
         {
+            $action = "Logged In";
+            $role = "admin";
             $_SESSION['admin'] = $id;
-            $_SESSION['role'] = "admin";
+            $_SESSION['role'] = $role;
+
+            $insert = $conn->query("insert into logs (user_id, name,role, action )
+            values('$id', '$name', '$role','$action')");
         }
 
         else
@@ -43,11 +49,17 @@ if(isset($_POST['login']))
         $email2 = $staff['email'];
         $pass = $staff['password'];
         $id = $staff['id'];
-        echo $role = $staff['role'];
+        $urole = $staff['role'];
+        $uname = $staff['lname'].' '.$staff['fname'];
+
         if(strcasecmp($password, $pass)==0 && strcasecmp($email, $email2)==0)
         {
+            $uaction= "Logged In";
             $_SESSION['admin'] = $id;
-            echo $_SESSION['role'] = $role;
+            $_SESSION['role'] = $role;
+
+            $insert = $conn->query("insert into logs (user_id, name,role, action )
+            values('$id', '$uname', '$urole','$uaction')");
         }
 
         else

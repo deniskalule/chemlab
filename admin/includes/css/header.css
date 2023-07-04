@@ -1,11 +1,12 @@
 /* main */
 .main
 {
-    margin: 15px;
+    margin: 0px;
     height: 98vh;
     border-radius: 20px;
     display: flex;
     overflow: hidden;
+    position: relative;
 }
 
 a
